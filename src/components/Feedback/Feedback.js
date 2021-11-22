@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from './Feedback.module.scss';
 class Feedback extends React.Component {
   static propTypes = {
     options: PropTypes.array.isRequired,
@@ -7,10 +8,11 @@ class Feedback extends React.Component {
 
   render() {
     return (
-      <>
+      <div className={s.container}>
         {this.props.options.map(btn => {
           return (
             <button
+              className={s.button}
               key={btn}
               type="button"
               onClick={e => {
@@ -21,7 +23,7 @@ class Feedback extends React.Component {
             </button>
           );
         })}
-      </>
+      </div>
     );
   }
 }
