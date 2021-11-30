@@ -34,6 +34,7 @@ class App extends React.Component {
 
   render() {
     const btnOptions = Object.keys(this.state);
+    console.log(btnOptions);
     return (
       <div>
         <Section title={'Please leave your feedback'}>

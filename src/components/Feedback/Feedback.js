@@ -1,31 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Feedback.module.scss';
-class Feedback extends React.Component {
-  static propTypes = {
-    options: PropTypes.array.isRequired,
-  };
-
-  render() {
-    return (
-      <div className={s.container}>
-        {this.props.options.map(btn => {
-          return (
-            <button
-              className={s.button}
-              key={btn}
-              type="button"
-              onClick={e => {
-                this.props.onClick(e);
-              }}
-            >
-              {btn}
-            </button>
-          );
-        })}
-      </div>
-    );
-  }
+export default function Feedback({ options, onClick }) {
+  return (
+    <div className={s.container}>
+      {options.map(btn => {
+        return (
+          <button
+            className={s.button}
+            key={btn}
+            type="button"
+            onClick={e => {
+              onClick(e);
+            }}
+          >
+            {btn}
+          </button>
+        );
+      })}
+    </div>
+  );
 }
-
-export default Feedback;
+Feedback.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onClick: PropTypes.func.isRequired,
+};
